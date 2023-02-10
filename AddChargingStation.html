@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $('#navbar').load("AdminNavbar.html");
+  $('#footer').load("Footer.html");
+});
+</script>
+<title>EV Charging Station Finder</title>
+
+</head>
+<body>
+  <div id="navbar"></div>
+  <form method="post" action="AddChargingStation.php">
+  <div style="color: green;margin-left: 70px;margin-right: 70px;margin-top: 40px;margin-bottom: 20px;">
+    <div style="display: flex; margin-bottom: 20px;justify-content: space-between;">
+      <span>
+    <label style="font-size: 30px;width:270px;font-weight: 500;">Name of Station: </label>
+    <input type="text" name="name" style="border: 2px solid black;color:black;font-size: 28px;padding-left: 10px;width:fit-content;">
+      </span>
+      </div>
+
+      <div style="display: flex; margin-bottom: 20px;justify-content: space-between;">
+        <span>
+      <label style="font-size: 30px;width:150px;font-weight: 500;">State: </label>
+      <input type="text" name="State" style="border: 2px solid black;color:black;font-size: 28px;padding-left: 10px;width:370px;" >
+        </span>
+        <span>
+        <label style="font-size: 30px;width:110px;font-weight: 500;">City: </label>
+        <input type="text" name="City" style="border: 2px solid black;color:black;font-size: 28px;padding-left: 10px;width: 400px;">
+      </span>
+        </div>
+
+  <div style="display: flex;margin-bottom: 20px;">
+    <label style="font-size: 30px;width:150px;font-weight: 500;">Address: </label>
+    <input type="text" name="address" style="border: 2px solid black;color:black;font-size: 28px;width: 93%;padding-left: 10px;">
+  </div>
+  <div style="display: flex;justify-content: space-between;margin-bottom: 20px;">
+    <span>
+    <label style="font-size: 30px;width:430px;font-weight: 500;">Number of 2 wheeler ports: </label>
+    <select name="No_of_2wheeler_ports" id="chargertypes" style="font-size: 28px;width: 60px;padding-left: 13px;">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+  </span>
+  <span>
+    <label style="font-size: 30px;width:430px;font-weight: 500;">Number of 4 wheeler ports: </label>
+    <select name="No_of_4wheeler_ports" id="chargertypes" style="font-size: 28px;width: 60px;padding-left: 13px;">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+  </span>
+  </div>
+  <div style="display: flex;margin-bottom: 20px;justify-content: space-between;">
+    <span>
+        <label style="font-size: 30px;width:410px;font-weight: 500;">Charger Types Supported: </label>
+        <select name="Charger_type" style="border: 2px solid black;color:black;font-size: 28px;width: 100px;padding-left: 10px;">
+          <option value="Slow">Slow</option>
+          <option value="Fast">Fast</option>
+          <option value="Rapid">Rapid</option>
+          </select>
+      </span>
+      <span>
+        <label style="font-size: 30px;width:410px;font-weight: 500;">Rate: </label>
+        <input type="text" name="rate" style="border: 2px solid black;color:black;font-size: 28px;width: 300px;padding-left: 10px;">
+      </span>
+  </div>
+  </div>
+  <div style="margin: 20px;">
+    <button type="submit" style="font-size: 30px;font-weight: 600;background-color: green;width: 120px;position: relative; left: 90%;">Submit</button>
+  </div>
+</form>
+  <div id="footer" style="position: absolute; bottom:0px;width:100%;"></div>
+
+</body>
+</html>

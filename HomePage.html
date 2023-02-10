@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+   
+   $('#navbar').load("Navbar.html");
+   $('#searchbox').load("searchbox.html");
+   $('#footer').load("Footer.html");
+
+});
+
+function displaySelected(str) {
+  if (str == "") {
+    document.getElementById("map").innerHTML = "";
+    return;
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("map").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET","FindStations.php?c="+str,true);
+    xmlhttp.send();
+  }
+}
+
+function bookStation(id) {
+  window.location.href = "Bookings.php?".concat(id);
+}
+</script>
+
+    <title>EV Charging Station Finder</title>
+  </head>
+  <body>
+    <div id="navbar"></div>
+    <div style="display:flex;">
+      <div id="map" style="width:70%;font-size: 40px;margin-bottom: 20px;color:green;text-align: center;margin-top: 20px;font-weight: 500;overflow-y:auto;overflow-x: auto;">
+        Search Results
+        <div style="height:auto;width:95%;align-self: center;margin:15px;border:2px solid black;font-size: 15px;text-align: left;display: flex;">
+          No city selected
+        </div>
+      </div>  
+      <div id="searchbox" style="margin:10px;width:28%;align-items: center;padding:10px"></div>
+    </div>
+    <div style="display:flex;">
+      <img style="width:30%;margin:10px;" src="images/bg_photo.jpg" alt="photo">
+      <div style="height:400px;width:68%;border: 2px solid black;margin:10px;font-size:25px;">
+        A charging station, also known as a charge point or electric vehicle supply equipment (EVSE), is a piece of equipment that supplies electrical power for charging plug-in electric vehicles (including electric cars, electric trucks, electric buses, neighborhood electric vehicles, and plug-in hybrids).
+
+        There are two main types: AC charging stations and DC charging stations. Batteries can only be charged with direct current (DC) electric power, while most electricity is delivered from the power grid as alternating current (AC). For this reason, most electric vehicles have a built-in AC-to-DC converter, commonly known as the "onboard charger". At an AC charging station, AC power from the grid is supplied to this onboard charger, which produces DC power to charge the battery. 
+      </div>
+    </div>
+    <div style="display:flex;">
+      <div style="height:400px;width:68%;border: 2px solid black;margin:10px;font-size:25px;">
+        A charging station, also known as a charge point or electric vehicle supply equipment (EVSE), is a piece of equipment that supplies electrical power for charging plug-in electric vehicles (including electric cars, electric trucks, electric buses, neighborhood electric vehicles, and plug-in hybrids).
+
+        There are two main types: AC charging stations and DC charging stations. Batteries can only be charged with direct current (DC) electric power, while most electricity is delivered from the power grid as alternating current (AC). For this reason, most electric vehicles have a built-in AC-to-DC converter, commonly known as the "onboard charger". At an AC charging station, AC power from the grid is supplied to this onboard charger, which produces DC power to charge the battery. 
+      </div>
+      <img style="width:30%;margin:10px;" src="images/bg_photo.jpg" alt="photo">
+    </div>
+
+    <div id="footer"></div>
+
+  </body>
+</html>

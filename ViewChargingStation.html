@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $('#navbar').load("AdminNavbar.html");
+  $('#searchbox').load("searchbox.html");
+  $('#footer').load("Footer.html");
+});
+</script>
+<script>
+  function displaySelected(str) {
+  if (str == "") {
+    document.getElementById("map").innerHTML = "";
+    return;
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("map").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET","findStationAdmin.php?c="+str,true);
+    xmlhttp.send();
+  }
+}
+</script>
+<title>EV Charging Station Finder</title>
+
+</head>
+<body>
+  
+  <div id="navbar"></div>
+  <div style="display:flex;">
+    <div id="map" style="width:70%;font-size: 40px;margin-bottom: 20px;color:green;text-align: center;margin-top: 20px;font-weight: 500;overflow-y:auto;overflow-x: auto;">
+      Search Results
+      <div style="height:auto;width:95%;align-self: center;margin:15px;border:2px solid black;font-size: 15px;text-align: left;display: flex;">
+        No city selected
+      </div>
+    </div>  
+    <div id="searchbox" style="margin:10px;width:28%;align-items: center;padding:10px"></div>
+  </div>
+  <div id="footer" style="position: absolute;bottom: 0px;width: 100%;"></div>
+
+</body>
+</html>

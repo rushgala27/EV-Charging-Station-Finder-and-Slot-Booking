@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $('#navbar').load("AdminNavbar.html");
+  $('#footer').load("Footer.html");
+});
+</script>
+<script>
+    function displayInfo() {
+      $name = document.getElementById('first').value+' '+document.getElementById('last').value
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          if(this.responseText == "True"){
+            $('#displayinfo').load("Profile.php");
+            $('#displaybookingshistory').load("BookingsHistory.php");
+            document.getElementById('footer').style.position = "relative";
+          }
+          else{
+            window.alert("No such user");
+          }
+        }
+      };
+      xmlhttp.open("GET", "findUser.php?name=" + $name, true);
+      xmlhttp.send();  
+    }
+</script>
+
+  <title>EV Charging Station Finder</title>
+
+  </head>
+  <body>
+    <div id="navbar"></div>
+
+    <div style="color: green;margin-left: 70px;margin-right: 70px;margin-top: 40px;margin-bottom: 20px;">
+        <div style="display: flex; margin-bottom: 20px;justify-content: space-between;">
+          <span>
+        <label style="font-size: 30px;width:250px;font-weight: 500;">Enter First Name: </label>
+        <input type="text" id="first" style="border: 2px solid black;color:black;font-size: 28px;padding-left: 10px;width:fit-content;">
+          </span>
+          <span>
+          <label style="font-size: 30px;width:240px;font-weight: 500;">Enter Last Name: </label>
+          <input type="text" id="last" style="border: 2px solid black;color:black;font-size: 28px;padding-left: 10px;">
+        </span>
+        <button style="background-color: green;font-size: 30px;font-weight: 600;" onclick="displayInfo()">Search</button>
+          </div>
+
+    </div>
+    <div id="displayinfo"></div>
+    <div id="displaybookingshistory" style="margin-left: 70px;margin-right: 70px;"></div>
+    <div id="footer" style="position:absolute;bottom:0px;width:100%"></div>
+
+</body>
+</html>
